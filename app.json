@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "airblack",
-    "slug": "airblack",
+    "name": "AirBlack Beauty Club",
+    "slug": "airblack-beauty-club",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -12,16 +12,24 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "no"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.maharaja_bat.airblackbeautyclub"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1bd5b24e-e474-4188-b34c-51b7e5c605bd"
+      }
+    },
+    "owner": "maharaja_bat"
   }
 }

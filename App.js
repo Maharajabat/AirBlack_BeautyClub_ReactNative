@@ -7,9 +7,11 @@ import {
   ImageBackground,
   Image,
 } from "react-native";
+import { Dropdown } from 'react-native-element-dropdown';
 import Icon from "react-native-vector-icons/MaterialIcons";
 import Zoom from "react-native-vector-icons/MaterialCommunityIcons";
 import Star from "react-native-vector-icons/Entypo";
+import { useState } from "react";
 const logo = require("./assets/Image.png"),
   banner = require("./assets/Image (1).png"),
   certificate = require("./assets/image 676.png"),
@@ -19,7 +21,17 @@ const ins = require("./assets/instagram.png"),
   li = require("./assets/linkedin.webp"),
   tw = require("./assets/twitter.png");
 const bk = require("./assets/bookmark.png");
+const data = [
+  { label: 'Item 1', value: '1' },
+  { label: 'Item 2', value: '2' },
+];
+const number = [
+  { label: '+91', value: '91' },
+  { label: '+99', value: '40' },
+];
 export default function App() {
+  const [value,setValue]=useState(null);
+  const [phno,setPhno]=useState(91);
   return (
     <View style={styles.app}>
       <ScrollView>
@@ -63,27 +75,67 @@ export default function App() {
 
               <Text style={styles.inputtitle}>*Enter your WhatsApp Number</Text>
               <View style={styles.contactform}>
-                <TextInput style={styles.code} value="+91"></TextInput>
+              <Dropdown
+        style={styles.code}
+        placeholderStyle={styles.placeholderStyle}
+        data={number}
+        labelField="label"
+        valueField="phno"
+        onChange={item => {
+          setValue(item.value);
+        }}
+      />
                 <TextInput
                   style={styles.inputfield}
-                  placeholder="Eg. 0000000000"
+                  placeholder="Eg. 00000000000"
                 ></TextInput>
               </View>
               <Text style={styles.inputtitle}>*Select your profession</Text>
-              <TextInput
-                style={styles.inputfield}
-                placeholder="Choose the most relevant option"
-              ></TextInput>
+              <Dropdown
+        style={styles.dropdown}
+        placeholderStyle={styles.placeholderStyle}
+        data={data}
+        search
+        maxHeight={300}
+        labelField="label"
+        valueField="value"
+        placeholder="Choose the most relevant option"
+        searchPlaceholder="Search..."
+        value=""
+        onChange={item => {
+          setValue(item.value);
+        }}
+      />
               <Text style={styles.inputtitle}>*Select your goal</Text>
-              <TextInput
-                style={styles.inputfield}
-                placeholder="Choose the most relevant option"
-              ></TextInput>
-              <Text style={styles.inputtitle}>*Select your city</Text>
-              <TextInput
-                style={styles.inputfield}
-                placeholder="Choose the most relevant option"
-              ></TextInput>
+              <Dropdown
+        style={styles.dropdown}
+        placeholderStyle={styles.placeholderStyle}
+        data={data}
+        search
+        maxHeight={300}
+        labelField="label"
+        valueField="value"
+        placeholder="Choose the most relevant option"
+        searchPlaceholder="Search..."
+        onChange={item => {
+          setValue(item.value);
+        }}
+      />
+        <Text style={styles.inputtitle}>*Select your city</Text>
+        <Dropdown
+        style={styles.dropdown}
+        placeholderStyle={styles.placeholderStyle}
+        data={data}
+        search
+        maxHeight={300}
+        labelField="label"
+        valueField="value"
+        placeholder="Choose the most relevant option"
+        searchPlaceholder="Search..."
+        onChange={item => {
+          setValue(item.value);
+        }}
+      />
               <Text style={styles.button}>Submit</Text>
             </View>
           </View>
@@ -168,6 +220,16 @@ const styles = StyleSheet.create({
   logo: {
     flex: 1,
   },
+  dropdown:{
+    borderWidth: 1,
+    borderColor: "#D9D9D9",
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  placeholderStyle:{
+     color:'grey'
+  },
   code: {
     borderWidth: 1,
     borderColor: "#D9D9D9",
@@ -175,6 +237,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 10,
     marginRight: 5,
+    width:80
   },
   headertitle: {
     color: "white",
@@ -261,6 +324,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     width: "100%",
     borderRadius: 5,
+    fontWeight:'800',
+    fontSize:15
   },
   rbutton: {
     color: "white",
@@ -269,6 +334,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     width: "100%",
     borderRadius: 5,
+    fontWeight:'800',
+    fontSize:15
   },
   banner: {
     justifyContent:'space-between',
@@ -346,6 +413,8 @@ const styles = StyleSheet.create({
     width: "100%",
     borderRadius: 5,
     marginBottom: 10,
+    fontWeight:'800',
+    fontSize:15
   },
   socialmedia: {
     justifyContent: "center",
